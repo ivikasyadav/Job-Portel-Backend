@@ -19,8 +19,9 @@ app.use(express.json());
 
 const allowedOrigins = [
     'http://localhost:5173',
-    process.env.CLIENT_URL
-];
+    'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app',
+    'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app/api'
+  ];
 
 app.use(cors({
     origin: function (origin, callback) {
