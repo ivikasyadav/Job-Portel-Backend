@@ -20,7 +20,9 @@ app.use(express.json());
 const allowedOrigins = [
     'http://localhost:5173',
     'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app',
-    'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app/api'
+    // 'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app/api',
+    'job-fronted-alpha.vercel.app',
+    // 'job-fronted-alpha.vercel.app/api'
   ];
 
 app.use(cors({
