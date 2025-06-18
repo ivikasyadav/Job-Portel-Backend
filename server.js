@@ -17,7 +17,10 @@ const app = express();
 const server = http.createServer(app);
 app.use(express.json());
 
-app.use(cors('*'));
+app.use(cors({
+    origin: '*', 
+    credentials: true
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
