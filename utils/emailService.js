@@ -1,22 +1,19 @@
-// server/utils/emailService.js
 const dotenv = require('dotenv');
-// const nodemailer = require('nodemailer'); // Uncomment and install 'nodemailer' for real emails
+const nodemailer = require('nodemailer'); 
 
 dotenv.config();
 
-// Placeholder for a real email transporter.
-// In a production app, you would configure nodemailer with your email service provider.
-/*
+
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
-    secure: process.env.EMAIL_PORT === '465', // true for 465, false for other ports
+    secure: process.env.EMAIL_PORT === '465', 
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
 });
-*/
+
 
 
 const sendEmail = async (to, subject, text, html = '') => {
@@ -30,8 +27,7 @@ const sendEmail = async (to, subject, text, html = '') => {
         }
         console.log(`--- Email simulated successfully ---`);
 
-        // Uncomment the following block if you set up Nodemailer
-        /*
+       
         const mailOptions = {
             from: process.env.EMAIL_FROM || '"Job Portal" <noreply@jobportal.com>',
             to,
@@ -41,7 +37,7 @@ const sendEmail = async (to, subject, text, html = '') => {
         };
         await transporter.sendMail(mailOptions);
         console.log(`Email sent to ${to}`);
-        */
+        
     } catch (error) {
         console.error(`Error sending email to ${to}:`, error);
         
