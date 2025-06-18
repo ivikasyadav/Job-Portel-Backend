@@ -1,40 +1,23 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const colors = require('colors');
-const cors = require('cors');
-const connectDB = require('./config/db');
+const colors = require('colors'); 
+const cors = require('cors'); 
+const connectDB = require('./config/db'); 
 const authRoutes = require('./routes/authRoutes');
 const jobRoutes = require('./routes/jobRoutes');
 const applicationRoutes = require('./routes/applicationRoutes');
-const { errorHandler } = require('./middleware/errorMiddleware');
-const http = require('http');
-const { WebSocketServer } = require('ws');
-
+const { errorHandler } = require('./middleware/errorMiddleware'); 
+const http = require('http'); 
+const { WebSocketServer } = require('ws'); 
 dotenv.config();
+
 connectDB();
 
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
 
-const allowedOrigins = [
-    'http://localhost:5173',
-    'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app',
-    // 'https://job-fronted-hhs6dmwnn-vikas-yadavs-projects-29cd5a79.vercel.app/api',
-    'job-fronted-alpha.vercel.app',
-    // 'job-fronted-alpha.vercel.app/api'
-  ];
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin.trim())) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
-}));
+app.use(cors('*'));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
@@ -65,7 +48,8 @@ wss.on('connection', ws => {
     });
 });
 
-app.locals.wss = wss;
+app.locals.wss = wss; 
 
 const PORT = process.env.PORT || 5000;
+
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`.yellow.bold));
